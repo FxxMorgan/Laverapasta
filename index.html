@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carta - Pasta Italiana al Paso</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #fff8e7 0%, #f4f1e8 100%);
+      color: #2c2c2c;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), 
+                  url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="pasta" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="25" cy="25" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="1200" height="600" fill="%23d4671f"/><rect width="1200" height="600" fill="url(%23pasta)"/></svg>');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero-content p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      font-weight: 300;
+      opacity: 0.9;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 2rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .menu-section {
+      padding: 4rem 0;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .menu-section.visible {
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #d4671f;
+      margin-bottom: 0.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #d4671f, #f4a460);
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: #666;
+      font-weight: 300;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .menu-item {
+      background: white;
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(212, 103, 31, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .menu-item:hover::before {
+      left: 100%;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      border-color: #d4671f;
+    }
+
+    .menu-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+    }
+
+    .menu-item-name {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #2c2c2c;
+      margin-bottom: 0.25rem;
+    }
+
+    .menu-item-price {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #d4671f;
+      white-space: nowrap;
+    }
+
+    .menu-item-description {
+      color: #666;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+
+    .menu-item-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      background: linear-gradient(135deg, #d4671f, #f4a460);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .focaccia-section {
+      background: linear-gradient(135deg, #fff 0%, #f8f5f0 100%);
+      border-radius: 20px;
+      margin: 2rem 0;
+      padding: 3rem;
+    }
+
+    .specialty-item {
+      background: linear-gradient(135deg, #d4671f, #f4a460);
+      color: white;
+    }
+
+    .specialty-item .menu-item-name,
+    .specialty-item .menu-item-description {
+      color: white;
+    }
+
+    .specialty-item .tag {
+      background: rgba(255,255,255,0.2);
+      color: white;
+    }
+
+    .footer {
+      background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+      color: white;
+      text-align: center;
+      padding: 3rem 0;
+      margin-top: 4rem;
+    }
+
+    .footer-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-style: italic;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+
+    .footer-credit {
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+
+    .floating-menu {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: white;
+      border-radius: 50px;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      z-index: 1000;
+      display: flex;
+      gap: 1rem;
+      transform: translateY(-100px);
+      transition: transform 0.3s ease;
+    }
+
+    .floating-menu.visible {
+      transform: translateY(0);
+    }
+
+    .floating-menu a {
+      text-decoration: none;
+      color: #d4671f;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .floating-menu a:hover {
+      color: #2c2c2c;
+    }
+
+    @media (max-width: 768px) {
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .floating-menu {
+        display: none;
+      }
+      
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-content p {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-menu" id="floatingMenu">
+    <a href="#pastas">Pastas</a>
+    <a href="#salsas">Salsas</a>
+    <a href="#acompañamientos">Acompañamientos</a>
+    <a href="#postres">Postres</a>
+    <a href="#bebidas">Bebidas</a>
+  </div>
+
+  <div class="hero">
+    <div class="hero-content">
+      <h1 id="titulo">Pasta Italiana al Paso</h1>
+      <p>Hecho en Chile, inspirado en Italia</p>
+    </div>
+    <div class="scroll-indicator">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="menu-section" id="pastas">
+      <div class="section-header">
+        <h2 class="section-title">🍝 Pastas Frescas</h2>
+        <p class="section-subtitle">Hechas artesanalmente cada día</p>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-item specialty-item">
+          <div class="menu-item-header">
+            <div>
+              <div class="menu-item-name">Spaghetti</div>
+              <div class="menu-item-description">Pasta larga clásica, perfecta para cualquier salsa</div>
+            </div>
+            <div class="menu-item-price">$4.500</div>
+          </div>
+          <div class="menu-item-tags">
+            <span class="tag">Clásica</span>
+            <span class="tag">Popular</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <div>
+              <div class="menu-item-name">Fettuccine</div>
+              <div class="menu-item-description">Pasta plana ideal para salsas cremosas</div>
+            </div>
+            <div class="menu-item-price">$4.800</div>
+          </div>
+          <div class="menu-item-tags">
+            <span class="tag">Cremosa</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <div>
+              <div class="menu-item-name">Tagliolini</div>
+              <div class="menu-item-description">Pasta fina y elegante, tradición del norte de Italia</div>
+            </div>
+            <div class="menu-item-price">$5.200</div>
+          </div>
+          <div class="menu-item-tags">
+            <span class="tag">Premium</span>
+            <span class="tag">Tradicional</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-section" id="salsas">
+      <div class="section-header">
+        <h2 class="section-title">🍅 Salsas Artesanales</h2>
+        <p class="section-subtitle">El alma de cada plato</p>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <div>
+              <div class="menu-item-name">Pomodoro</div>
+              <div class="menu-item-description">Tomate san marzano, ajo dorado y albahaca fresca</div>
+            </div>
+            <div class="menu-item-price">+$2.000</div>
+          </div>
+          <div class="menu-item-tags">
+            <span class="tag">Vegana</span>
+            <span class="tag">Clásica</span>
+          </div>
+        </div>
+        <div class="menu-item specialty-item">
+          <div class="menu-item-header">
+            <div>
+              <div class="menu-item-name">Ragù Bolognese</div>
+              <div class="menu-item-description">Salsa de carne cocida a fuego lento por 4 horas</div>
+            </div>
+            <div class="menu-item-price">+$3.200</div>
+          </div>
+          <div class="menu-item-tags">
+            <span class="tag">Signature</span>
+            <span class="tag">Carne</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <div>
+              <div class="menu-item-name">Pesto Genovés</div>
+              <div class="menu-item-description">Albahaca, piñones, ajo y parmesano reggiano</div>
+            </div>
+            <div class="menu-item-price">+$2.800</div>
+          </div>
+          <div class="menu-item-tags">
+            <span class="tag">Vegetariana</span>
+            <span class="tag">Aromática</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <div>
+              <div class="menu-item-name">Aglio e Olio</div>
+              <div class="menu-item-description">Ajo dorado en aceite de oliva extra virgen y ají</div>
+            </div>
+            <div class="menu-item-price">+$1.800</div>
+          </div>
+          <div class="menu-item-tags">
+            <span class="tag">Picante</span>
+            <span class="tag">Simple</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <div>
+              <div class="menu-item-name">Carbonara</div>
+              <div class="menu-item-description">Yema de huevo, pecorino romano y pimienta negra</div>
+            </div>
+            <div class="menu-item-price">+$2.500</div>
+          </div>
+          <div class="menu-item-tags">
+            <span class="tag">Cremosa</span>
+            <span class="tag">Romana</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="focaccia-section">
+      <div class="menu-section" id="acompañamientos">
+        <div class="section-header">
+          <h2 class="section-title">🥖 Acompañamientos</h2>
+          <p class="section-subtitle">Para completar tu experiencia italiana</p>
+        </div>
+        <div class="menu-grid">
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <div>
+                <div class="menu-item-name">Focaccia con Romero</div>
+                <div class="menu-item-description">Pan artesanal con aceite de oliva y romero fresco</div>
+              </div>
+              <div class="menu-item-price">$2.800</div>
+            </div>
+            <div class="menu-item-tags">
+              <span class="tag">Artesanal</span>
+              <span class="tag">Aromática</span>
+            </div>
+          </div>
+          <div class="menu-item specialty-item">
+            <div class="menu-item-header">
+              <div>
+                <div class="menu-item-name">Focaccia Especial</div>
+                <div class="menu-item-description">Con tomates cherry confitados y aceitunas kalamata</div>
+              </div>
+              <div class="menu-item-price">$3.500</div>
+            </div>
+            <div class="menu-item-tags">
+              <span class="tag">Premium</span>
+              <span class="tag">Mediterránea</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <div>
+                <div class="menu-item-name">Pan Artesanal</div>
+                <div class="menu-item-description">Con aceite de oliva extra virgen y sal marina</div>
+              </div>
+              <div class="menu-item-price">$1.500</div>
+            </div>
+            <div class="menu-item-tags">
+              <span class="tag">Simple</span>
+              <span class="tag">Tradicional</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-section" id="postres">
+      <div class="section-header">
+        <h2 class="section-title">🍰 Dolci</h2>
+        <p class="section-subtitle">El dulce final perfecto</p>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <div>
+              <div class="menu-item-name">Panna Cotta</div>
+              <div class="menu-item-description">Cremosa panna cotta con salsa de frutillas frescas</div>
+            </div>
+            <div class="menu-item-price">$3.200</div>
+          </div>
+          <div class="menu-item-tags">
+            <span class="tag">Cremoso</span>
+            <span class="tag">Fresco</span>
+          </div>
+        </div>
+        <div class="menu-item specialty-item">
+          <div class="menu-item-header">
+            <div>
+              <div class="menu-item-name">Tiramisú</div>
+              <div class="menu-item-description">El clásico postre veneciano con café y mascarpone</div>
+            </div>
+            <div class="menu-item-price">$3.800</div>
+          </div>
+          <div class="menu-item-tags">
+            <span class="tag">Clásico</span>
+            <span class="tag">Café</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <div>
+              <div class="menu-item-name">Affogato al Caffè</div>
+              <div class="menu-item-description">Helado de vainilla "ahogado" en espresso caliente</div>
+            </div>
+            <div class="menu-item-price">$2.800</div>
+          </div>
+          <div class="menu-item-tags">
+            <span class="tag">Caliente</span>
+            <span class="tag">Único</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-section" id="bebidas">
+      <div class="section-header">
+        <h2 class="section-title">🥤 Bebidas</h2>
+        <p class="section-subtitle">Para acompañar tu comida</p>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <div>
+              <div class="menu-item-name">Limonada Natural</div>
+              <div class="menu-item-description">Refrescante limonada con limones recién exprimidos</div>
+            </div>
+            <div class="menu-item-price">$1.800</div>
+          </div>
+          <div class="menu-item-tags">
+            <span class="tag">Natural</span>
+            <span class="tag">Refrescante</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <div>
+              <div class="menu-item-name">Espresso</div>
+              <div class="menu-item-description">Café italiano auténtico, fuerte y aromático</div>
+            </div>
+            <div class="menu-item-price">$1.200</div>
+          </div>
+          <div class="menu-item-tags">
+            <span class="tag">Fuerte</span>
+            <span class="tag">Auténtico</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <div>
+              <div class="menu-item-name">Agua con Gas</div>
+              <div class="menu-item-description">Agua mineral italiana San Pellegrino</div>
+            </div>
+            <div class="menu-item-price">$1.500</div>
+          </div>
+          <div class="menu-item-tags">
+            <span class="tag">Premium</span>
+            <span class="tag">Italiana</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="container">
+      <p class="footer-quote">"La vera pasta. Al paso, pero con alma."</p>
+      <p class="footer-credit">Creado con pasión por Feer</p>
+    </div>
+  </div>
+
+  <script>
+    // Animaciones de entrada
+    anime({
+      targets: '#titulo',
+      translateY: [-100, 0],
+      opacity: [0, 1],
+      duration: 2000,
+      easing: 'easeOutExpo',
+      delay: 500
+    });
+
+    // Mostrar menú flotante al hacer scroll
+    window.addEventListener('scroll', () => {
+      const floatingMenu = document.getElementById('floatingMenu');
+      if (window.scrollY > window.innerHeight / 2) {
+        floatingMenu.classList.add('visible');
+      } else {
+        floatingMenu.classList.remove('visible');
+      }
+    });
+
+    // Animación de aparición de secciones
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observar todas las secciones del menú
+    document.querySelectorAll('.menu-section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Animación de los elementos del menú al hacer hover
+    document.querySelectorAll('.menu-item').forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        anime({
+          targets: item,
+          scale: 1.02,
+          duration: 300,
+          easing: 'easeOutQuad'
+        });
+      });
+
+      item.addEventListener('mouseleave', () => {
+        anime({
+          targets: item,
+          scale: 1,
+          duration: 300,
+          easing: 'easeOutQuad'
+        });
+      });
+    });
+
+    // Scroll suave para los enlaces del menú flotante
+    document.querySelectorAll('.floating-menu a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+         
