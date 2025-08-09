@@ -230,10 +230,10 @@ Si te gusta este proyecto, ¡dale una ⭐!
 
 ## 📊 Estadísticas del Proyecto
 
-![GitHub stars](https://img.shields.io/github/stars/tu-usuario/la-vera-pasta?style=social)
-![GitHub forks](https://img.shields.io/github/forks/tu-usuario/la-vera-pasta?style=social)
-![GitHub issues](https://img.shields.io/github/issues/tu-usuario/la-vera-pasta)
-![GitHub last commit](https://img.shields.io/github/last-commit/tu-usuario/la-vera-pasta)
+![GitHub stars](https://img.shields.io/github/stars/FxxMorgan/Laverapasta?style=social)
+![GitHub forks](https://img.shields.io/github/forks/FxxMorgan/Laverapasta?style=social)
+![GitHub issues](https://img.shields.io/github/issues/FxxMorgan/Laverapasta)
+![GitHub last commit](https://img.shields.io/github/last-commit/FxxMorgan/Laverapasta)
 
 ## 🗺️ Roadmap
 
