@@ -1,0 +1,22 @@
+# Robots.txt para La Vera Pasta
+# Optimizado para SEO
+
+User-agent: *
+Allow: /
+
+# Permitir acceso a recursos importantes
+Allow: /index.html
+Allow: /manifest.json
+Allow: /sw.js
+
+# No indexar archivos temporales o de sistema
+Disallow: /node_modules/
+Disallow: /*.log
+Disallow: /temp/
+Disallow: /.git/
+
+# Sitemap (cuando esté disponible)
+# Sitemap: https://laverapasta.cl/sitemap.xml
+
+# Crawl delay para ser amigable con los bots
+Crawl-delay: 1

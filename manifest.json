@@ -1,0 +1,32 @@
+{
+  "name": "La Vera Pasta",
+  "short_name": "La Vera Pasta",
+  "description": "Auténtica pasta italiana hecha en casa - Pedidos online",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff8e7",
+  "theme_color": "#d4671f",
+  "orientation": "portrait-primary",
+  "categories": ["food", "restaurant", "business"],
+  "lang": "es",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMjQiIGZpbGw9IiNkNDY3MWYiLz4KPHR2eHQgeD0iOTYiIHk9IjEyMCIgZm9udC1zaXplPSI4MCIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn42dPC90ZXh0Pgo8L3N2Zz4K",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iNjQiIGZpbGw9IiNkNDY3MWYiLz4KPHR2eHQgeD0iMjU2IiB5PSIzMjAiIGZvbnQtc2l6ZT0iMjAwIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfjZ08L3RleHQ+Cjwvc3ZnPgo=",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjU2OCIgdmlld0JveD0iMCAwIDMyMCA1NjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iNTY4IiBmaWxsPSIjZmZmOGU3Ii8+CjxyZWN0IHg9IjIwIiB5PSIyMCIgd2lkdGg9IjI4MCIgaGVpZ2h0PSI1MjgiIHJ4PSIxNiIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjZTBlMGUwIi8+Cjx0ZXh0IHg9IjE2MCIgeT0iNzAiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNkNDY3MWYiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TGEgVmVyYSBQYXN0YTwvdGV4dD4KPHR5eHQgeD0iMTYwIiB5PSIxMDAiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM2NjY2NjYiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QXV0w6ludGljYSBwYXN0YSBpdGFsaWFuYTwvdGV4dD4KPC9zdmc+Cg==",
+      "sizes": "320x568",
+      "type": "image/svg+xml",
+      "form_factor": "narrow"
+    }
+  ]
+}
