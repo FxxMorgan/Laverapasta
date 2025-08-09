@@ -135,13 +135,15 @@
       font-size: 1.1rem;
       color: #666;
       font-weight: 300;
+      margin-bottom: 1.5rem;
+      margin-top: 1rem;
     }
 
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
-      margin-top: 2rem;
+      margin-top: 3rem;
     }
 
     .menu-item {
@@ -294,6 +296,361 @@
       color: #2c2c2c;
     }
 
+    /* Estilos para el carrito */
+    .cart-button {
+      background: linear-gradient(135deg, #d4671f, #f4a460);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      margin-top: 0.5rem;
+    }
+
+    .cart-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 103, 31, 0.3);
+    }
+
+    .cart-button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .quantity-btn {
+      background: #d4671f;
+      color: white;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .quantity-btn:hover {
+      background: #b8541a;
+    }
+
+    .quantity-display {
+      font-weight: 600;
+      color: #d4671f;
+      min-width: 30px;
+      text-align: center;
+    }
+
+    .floating-cart {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: white;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      z-index: 1000;
+      max-width: 300px;
+      transform: translateX(400px);
+      transition: transform 0.3s ease;
+    }
+
+    .floating-cart.visible {
+      transform: translateX(0);
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-title {
+      font-weight: 600;
+      color: #d4671f;
+    }
+
+    .cart-close {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .cart-items {
+      max-height: 200px;
+      overflow-y: auto;
+      margin-bottom: 1rem;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    .cart-item-info {
+      flex: 1;
+    }
+
+    .cart-item-name {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #2c2c2c;
+    }
+
+    .cart-item-details {
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    .cart-total {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #d4671f;
+      text-align: center;
+      margin-bottom: 1rem;
+      padding-top: 0.5rem;
+      border-top: 2px solid #d4671f;
+    }
+
+    .cart-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .whatsapp-btn {
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-btn:hover {
+      background: #128C7E;
+    }
+
+    .mercadolibre-btn {
+      background: #FFE600;
+      color: #333;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .mercadolibre-btn:hover {
+      background: #E6CF00;
+    }
+
+    .cart-counter {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #d4671f;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+
+    .cart-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #d4671f;
+      color: white;
+      border: none;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.5rem;
+      box-shadow: 0 5px 20px rgba(212, 103, 31, 0.3);
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+
+    .cart-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    /* Modal para hora de retiro */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal-overlay.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      transform: scale(0.8);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.visible .modal {
+      transform: scale(1);
+    }
+
+    .modal-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #d4671f;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-subtitle {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .modal-body {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #2c2c2c;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #d4671f;
+    }
+
+    .time-suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .time-btn {
+      background: #f8f5f0;
+      border: 1px solid #e0e0e0;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .time-btn:hover,
+    .time-btn.selected {
+      background: #d4671f;
+      color: white;
+      border-color: #d4671f;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .modal-btn {
+      flex: 1;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 10px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .modal-btn-cancel {
+      background: #f0f0f0;
+      color: #666;
+    }
+
+    .modal-btn-cancel:hover {
+      background: #e0e0e0;
+    }
+
+    .modal-btn-confirm {
+      background: #25D366;
+      color: white;
+    }
+
+    .modal-btn-confirm:hover {
+      background: #128C7E;
+    }
+
     @media (max-width: 768px) {
       .menu-grid {
         grid-template-columns: 1fr;
@@ -332,6 +689,21 @@
       .focaccia-section {
         padding: 2rem 1rem;
       }
+      
+      .floating-cart {
+        right: 10px;
+        bottom: 10px;
+        max-width: calc(100vw - 20px);
+        padding: 1rem;
+      }
+      
+      .cart-toggle {
+        right: 15px;
+        bottom: 15px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
@@ -358,81 +730,114 @@
     <div class="menu-section" id="pastas">
       <div class="section-header">
         <h2 class="section-title">🍝 Pastas Frescas</h2>
-        <p class="section-subtitle">Hechas artesanalmente cada día</p>
+        <p class="section-subtitle">Incluyen salsa pomodoro tradicional • Puedes cambiar por otras salsas</p>
       </div>
       <div class="menu-grid">
-        <div class="menu-item specialty-item">
+        <div class="menu-item">
           <div class="menu-item-header">
             <div>
               <div class="menu-item-name">Spaghetti</div>
-              <div class="menu-item-description">Pasta larga clásica, perfecta para cualquier salsa</div>
+              <div class="menu-item-description">Pasta larga clásica con salsa pomodoro tradicional incluida</div>
             </div>
-            <div class="menu-item-price">$4.500</div>
+            <div class="menu-item-price">$3.500</div>
           </div>
           <div class="menu-item-tags">
-            <span class="tag">Clásica</span>
+            <span class="tag">Incluye Salsa</span>
             <span class="tag">Popular</span>
           </div>
+          <div class="quantity-controls" id="qty-spaghetti" style="display: none;">
+            <button class="quantity-btn" onclick="updateQuantity('spaghetti', -1)">-</button>
+            <span class="quantity-display">1</span>
+            <button class="quantity-btn" onclick="updateQuantity('spaghetti', 1)">+</button>
+          </div>
+          <button class="cart-button" onclick="addToCart('spaghetti', 'Spaghetti + Salsa Pomodoro', 3500)" id="btn-spaghetti">
+            Agregar al carrito
+          </button>
         </div>
         <div class="menu-item">
           <div class="menu-item-header">
             <div>
               <div class="menu-item-name">Fettuccine</div>
-              <div class="menu-item-description">Pasta plana ideal para salsas cremosas</div>
+              <div class="menu-item-description">Pasta plana con salsa pomodoro tradicional incluida</div>
             </div>
-            <div class="menu-item-price">$4.800</div>
+            <div class="menu-item-price">$3.800</div>
           </div>
           <div class="menu-item-tags">
+            <span class="tag">Incluye Salsa</span>
             <span class="tag">Cremosa</span>
           </div>
+          <div class="quantity-controls" id="qty-fettuccine" style="display: none;">
+            <button class="quantity-btn" onclick="updateQuantity('fettuccine', -1)">-</button>
+            <span class="quantity-display">1</span>
+            <button class="quantity-btn" onclick="updateQuantity('fettuccine', 1)">+</button>
+          </div>
+          <button class="cart-button" onclick="addToCart('fettuccine', 'Fettuccine + Salsa Pomodoro', 3800)" id="btn-fettuccine">
+            Agregar al carrito
+          </button>
         </div>
         <div class="menu-item">
           <div class="menu-item-header">
             <div>
               <div class="menu-item-name">Tagliolini</div>
-              <div class="menu-item-description">Pasta fina y elegante, tradición del norte de Italia</div>
+              <div class="menu-item-description">Pasta fina y elegante con salsa pomodoro tradicional incluida</div>
             </div>
-            <div class="menu-item-price">$5.200</div>
+            <div class="menu-item-price">$4.200</div>
           </div>
           <div class="menu-item-tags">
+            <span class="tag">Incluye Salsa</span>
             <span class="tag">Premium</span>
-            <span class="tag">Tradicional</span>
           </div>
+          <div class="quantity-controls" id="qty-tagliolini" style="display: none;">
+            <button class="quantity-btn" onclick="updateQuantity('tagliolini', -1)">-</button>
+            <span class="quantity-display">1</span>
+            <button class="quantity-btn" onclick="updateQuantity('tagliolini', 1)">+</button>
+          </div>
+          <button class="cart-button" onclick="addToCart('tagliolini', 'Tagliolini + Salsa Pomodoro', 4200)" id="btn-tagliolini">
+            Agregar al carrito
+          </button>
         </div>
       </div>
     </div>
 
     <div class="menu-section" id="salsas">
       <div class="section-header">
-        <h2 class="section-title">🍅 Salsas Artesanales</h2>
-        <p class="section-subtitle">El alma de cada plato</p>
+        <h2 class="section-title">🍅 Cambio de Salsa</h2>
+        <p class="section-subtitle">¿Quieres cambiar tu salsa pomodoro incluida por otra?</p>
       </div>
       <div class="menu-grid">
         <div class="menu-item">
           <div class="menu-item-header">
             <div>
-              <div class="menu-item-name">Pomodoro</div>
+              <div class="menu-item-name">Pomodoro Tradicional</div>
               <div class="menu-item-description">Tomate san marzano, ajo dorado y albahaca fresca</div>
             </div>
-            <div class="menu-item-price">+$2.000</div>
+            <div class="menu-item-price">Incluida</div>
           </div>
           <div class="menu-item-tags">
-            <span class="tag">Vegana</span>
+            <span class="tag">Gratis</span>
             <span class="tag">Clásica</span>
           </div>
         </div>
-        <div class="menu-item specialty-item">
+        <div class="menu-item">
           <div class="menu-item-header">
             <div>
               <div class="menu-item-name">Ragù Bolognese</div>
               <div class="menu-item-description">Salsa de carne cocida a fuego lento por 4 horas</div>
             </div>
-            <div class="menu-item-price">+$3.200</div>
+            <div class="menu-item-price">+$2.000</div>
           </div>
           <div class="menu-item-tags">
             <span class="tag">Signature</span>
-            <span class="tag">Carne</span>
+            <span class="tag">Premium</span>
           </div>
+          <div class="quantity-controls" id="qty-bolognese" style="display: none;">
+            <button class="quantity-btn" onclick="updateQuantity('bolognese', -1)">-</button>
+            <span class="quantity-display">1</span>
+            <button class="quantity-btn" onclick="updateQuantity('bolognese', 1)">+</button>
+          </div>
+          <button class="cart-button" onclick="addToCart('bolognese', 'Cambio a Ragù Bolognese', 2000)" id="btn-bolognese">
+            Cambiar salsa
+          </button>
         </div>
         <div class="menu-item">
           <div class="menu-item-header">
@@ -440,12 +845,20 @@
               <div class="menu-item-name">Pesto Genovés</div>
               <div class="menu-item-description">Albahaca, piñones, ajo y parmesano reggiano</div>
             </div>
-            <div class="menu-item-price">+$2.800</div>
+            <div class="menu-item-price">+$1.500</div>
           </div>
           <div class="menu-item-tags">
             <span class="tag">Vegetariana</span>
             <span class="tag">Aromática</span>
           </div>
+          <div class="quantity-controls" id="qty-pesto" style="display: none;">
+            <button class="quantity-btn" onclick="updateQuantity('pesto', -1)">-</button>
+            <span class="quantity-display">1</span>
+            <button class="quantity-btn" onclick="updateQuantity('pesto', 1)">+</button>
+          </div>
+          <button class="cart-button" onclick="addToCart('pesto', 'Cambio a Pesto Genovés', 1500)" id="btn-pesto">
+            Cambiar salsa
+          </button>
         </div>
         <div class="menu-item">
           <div class="menu-item-header">
@@ -453,12 +866,20 @@
               <div class="menu-item-name">Aglio e Olio</div>
               <div class="menu-item-description">Ajo dorado en aceite de oliva extra virgen y ají</div>
             </div>
-            <div class="menu-item-price">+$1.800</div>
+            <div class="menu-item-price">+$800</div>
           </div>
           <div class="menu-item-tags">
             <span class="tag">Picante</span>
             <span class="tag">Simple</span>
           </div>
+          <div class="quantity-controls" id="qty-aglio" style="display: none;">
+            <button class="quantity-btn" onclick="updateQuantity('aglio', -1)">-</button>
+            <span class="quantity-display">1</span>
+            <button class="quantity-btn" onclick="updateQuantity('aglio', 1)">+</button>
+          </div>
+          <button class="cart-button" onclick="addToCart('aglio', 'Cambio a Aglio e Olio', 800)" id="btn-aglio">
+            Cambiar salsa
+          </button>
         </div>
         <div class="menu-item">
           <div class="menu-item-header">
@@ -466,12 +887,20 @@
               <div class="menu-item-name">Carbonara</div>
               <div class="menu-item-description">Yema de huevo, pecorino romano y pimienta negra</div>
             </div>
-            <div class="menu-item-price">+$2.500</div>
+            <div class="menu-item-price">+$1.800</div>
           </div>
           <div class="menu-item-tags">
             <span class="tag">Cremosa</span>
             <span class="tag">Romana</span>
           </div>
+          <div class="quantity-controls" id="qty-carbonara" style="display: none;">
+            <button class="quantity-btn" onclick="updateQuantity('carbonara', -1)">-</button>
+            <span class="quantity-display">1</span>
+            <button class="quantity-btn" onclick="updateQuantity('carbonara', 1)">+</button>
+          </div>
+          <button class="cart-button" onclick="addToCart('carbonara', 'Cambio a Carbonara', 1800)" id="btn-carbonara">
+            Cambiar salsa
+          </button>
         </div>
       </div>
     </div>
@@ -489,25 +918,41 @@
                 <div class="menu-item-name">Focaccia con Romero</div>
                 <div class="menu-item-description">Pan artesanal con aceite de oliva y romero fresco</div>
               </div>
-              <div class="menu-item-price">$2.800</div>
+              <div class="menu-item-price">$2.200</div>
             </div>
             <div class="menu-item-tags">
               <span class="tag">Artesanal</span>
               <span class="tag">Aromática</span>
             </div>
+            <div class="quantity-controls" id="qty-focaccia" style="display: none;">
+              <button class="quantity-btn" onclick="updateQuantity('focaccia', -1)">-</button>
+              <span class="quantity-display">1</span>
+              <button class="quantity-btn" onclick="updateQuantity('focaccia', 1)">+</button>
+            </div>
+            <button class="cart-button" onclick="addToCart('focaccia', 'Focaccia con Romero', 2200)" id="btn-focaccia">
+              Agregar al carrito
+            </button>
           </div>
-          <div class="menu-item specialty-item">
+          <div class="menu-item">
             <div class="menu-item-header">
               <div>
                 <div class="menu-item-name">Focaccia Especial</div>
                 <div class="menu-item-description">Con tomates cherry confitados y aceitunas kalamata</div>
               </div>
-              <div class="menu-item-price">$3.500</div>
+              <div class="menu-item-price">$2.800</div>
             </div>
             <div class="menu-item-tags">
               <span class="tag">Premium</span>
               <span class="tag">Mediterránea</span>
             </div>
+            <div class="quantity-controls" id="qty-focaccia-especial" style="display: none;">
+              <button class="quantity-btn" onclick="updateQuantity('focaccia-especial', -1)">-</button>
+              <span class="quantity-display">1</span>
+              <button class="quantity-btn" onclick="updateQuantity('focaccia-especial', 1)">+</button>
+            </div>
+            <button class="cart-button" onclick="addToCart('focaccia-especial', 'Focaccia Especial', 2800)" id="btn-focaccia-especial">
+              Agregar al carrito
+            </button>
           </div>
           <div class="menu-item">
             <div class="menu-item-header">
@@ -515,12 +960,20 @@
                 <div class="menu-item-name">Pan Artesanal</div>
                 <div class="menu-item-description">Con aceite de oliva extra virgen y sal marina</div>
               </div>
-              <div class="menu-item-price">$1.500</div>
+              <div class="menu-item-price">$1.200</div>
             </div>
             <div class="menu-item-tags">
               <span class="tag">Simple</span>
               <span class="tag">Tradicional</span>
             </div>
+            <div class="quantity-controls" id="qty-pan" style="display: none;">
+              <button class="quantity-btn" onclick="updateQuantity('pan', -1)">-</button>
+              <span class="quantity-display">1</span>
+              <button class="quantity-btn" onclick="updateQuantity('pan', 1)">+</button>
+            </div>
+            <button class="cart-button" onclick="addToCart('pan', 'Pan Artesanal', 1200)" id="btn-pan">
+              Agregar al carrito
+            </button>
           </div>
         </div>
       </div>
@@ -544,8 +997,16 @@
             <span class="tag">Cremoso</span>
             <span class="tag">Fresco</span>
           </div>
+          <div class="quantity-controls" id="qty-panna-cotta" style="display: none;">
+            <button class="quantity-btn" onclick="updateQuantity('panna-cotta', -1)">-</button>
+            <span class="quantity-display">1</span>
+            <button class="quantity-btn" onclick="updateQuantity('panna-cotta', 1)">+</button>
+          </div>
+          <button class="cart-button" onclick="addToCart('panna-cotta', 'Panna Cotta', 3200)" id="btn-panna-cotta">
+            Agregar al carrito
+          </button>
         </div>
-        <div class="menu-item specialty-item">
+        <div class="menu-item">
           <div class="menu-item-header">
             <div>
               <div class="menu-item-name">Tiramisú</div>
@@ -557,6 +1018,14 @@
             <span class="tag">Clásico</span>
             <span class="tag">Café</span>
           </div>
+          <div class="quantity-controls" id="qty-tiramisu" style="display: none;">
+            <button class="quantity-btn" onclick="updateQuantity('tiramisu', -1)">-</button>
+            <span class="quantity-display">1</span>
+            <button class="quantity-btn" onclick="updateQuantity('tiramisu', 1)">+</button>
+          </div>
+          <button class="cart-button" onclick="addToCart('tiramisu', 'Tiramisú', 3800)" id="btn-tiramisu">
+            Agregar al carrito
+          </button>
         </div>
         <div class="menu-item">
           <div class="menu-item-header">
@@ -570,6 +1039,14 @@
             <span class="tag">Caliente</span>
             <span class="tag">Único</span>
           </div>
+          <div class="quantity-controls" id="qty-affogato" style="display: none;">
+            <button class="quantity-btn" onclick="updateQuantity('affogato', -1)">-</button>
+            <span class="quantity-display">1</span>
+            <button class="quantity-btn" onclick="updateQuantity('affogato', 1)">+</button>
+          </div>
+          <button class="cart-button" onclick="addToCart('affogato', 'Affogato al Caffè', 2800)" id="btn-affogato">
+            Agregar al carrito
+          </button>
         </div>
       </div>
     </div>
@@ -592,6 +1069,14 @@
             <span class="tag">Natural</span>
             <span class="tag">Refrescante</span>
           </div>
+          <div class="quantity-controls" id="qty-limonada" style="display: none;">
+            <button class="quantity-btn" onclick="updateQuantity('limonada', -1)">-</button>
+            <span class="quantity-display">1</span>
+            <button class="quantity-btn" onclick="updateQuantity('limonada', 1)">+</button>
+          </div>
+          <button class="cart-button" onclick="addToCart('limonada', 'Limonada Natural', 1800)" id="btn-limonada">
+            Agregar al carrito
+          </button>
         </div>
         <div class="menu-item">
           <div class="menu-item-header">
@@ -605,6 +1090,14 @@
             <span class="tag">Fuerte</span>
             <span class="tag">Auténtico</span>
           </div>
+          <div class="quantity-controls" id="qty-espresso" style="display: none;">
+            <button class="quantity-btn" onclick="updateQuantity('espresso', -1)">-</button>
+            <span class="quantity-display">1</span>
+            <button class="quantity-btn" onclick="updateQuantity('espresso', 1)">+</button>
+          </div>
+          <button class="cart-button" onclick="addToCart('espresso', 'Espresso', 1200)" id="btn-espresso">
+            Agregar al carrito
+          </button>
         </div>
         <div class="menu-item">
           <div class="menu-item-header">
@@ -618,7 +1111,75 @@
             <span class="tag">Premium</span>
             <span class="tag">Italiana</span>
           </div>
+          <div class="quantity-controls" id="qty-agua" style="display: none;">
+            <button class="quantity-btn" onclick="updateQuantity('agua', -1)">-</button>
+            <span class="quantity-display">1</span>
+            <button class="quantity-btn" onclick="updateQuantity('agua', 1)">+</button>
+          </div>
+          <button class="cart-button" onclick="addToCart('agua', 'Agua con Gas', 1500)" id="btn-agua">
+            Agregar al carrito
+          </button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón del carrito -->
+  <button class="cart-toggle" onclick="toggleCart()" id="cartToggle">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="cart-counter" id="cartCounter" style="display: none;">0</span>
+  </button>
+
+  <!-- Carrito flotante -->
+  <div class="floating-cart" id="floatingCart">
+    <div class="cart-header">
+      <span class="cart-title">🛒 Tu Pedido</span>
+      <button class="cart-close" onclick="toggleCart()">×</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p style="text-align: center; color: #666; padding: 1rem;">Tu carrito está vacío</p>
+    </div>
+    <div class="cart-total" id="cartTotal" style="display: none;">
+      Total: $0
+    </div>
+    <div class="cart-actions" id="cartActions" style="display: none;">
+      <button class="whatsapp-btn" onclick="sendWhatsApp()">
+        <i class="fab fa-whatsapp"></i> Enviar pedido por WhatsApp
+      </button>
+      <button class="mercadolibre-btn" onclick="payWithMercadoLibre()">
+        💳 Pagar con MercadoLibre
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal para hora de retiro -->
+  <div class="modal-overlay" id="pickupModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">🕐 Hora de Retiro</h3>
+        <p class="modal-subtitle">¿A qué hora pasarás a recoger tu pedido?</p>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Selecciona o escribe la hora:</label>
+          <input type="text" id="pickupTime" class="form-input" placeholder="Ej: 19:30, En 30 minutos, etc.">
+        </div>
+        <div class="time-suggestions">
+          <button class="time-btn" onclick="selectTime('En 20 minutos')">En 20 min</button>
+          <button class="time-btn" onclick="selectTime('En 30 minutos')">En 30 min</button>
+          <button class="time-btn" onclick="selectTime('En 1 hora')">En 1 hora</button>
+          <button class="time-btn" onclick="selectTime('19:00')">19:00</button>
+          <button class="time-btn" onclick="selectTime('19:30')">19:30</button>
+          <button class="time-btn" onclick="selectTime('20:00')">20:00</button>
+          <button class="time-btn" onclick="selectTime('20:30')">20:30</button>
+          <button class="time-btn" onclick="selectTime('21:00')">21:00</button>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="modal-btn modal-btn-cancel" onclick="closePickupModal()">Cancelar</button>
+        <button class="modal-btn modal-btn-confirm" onclick="confirmPickupTime()">
+          <i class="fab fa-whatsapp"></i> Enviar Pedido
+        </button>
       </div>
     </div>
   </div>
@@ -631,6 +1192,19 @@
   </div>
 
   <script>
+    // Variables del carrito
+    let cart = {};
+    let cartTotal = 0;
+    let cartCount = 0;
+
+    // Datos del restaurante
+    const restaurantData = {
+      name: "Pasta Italiana al Paso",
+      phone: "+56978411973", // Cambia por el número real
+      address: "Tomé, Chile",
+      mercadolibreUser: "FxxMorgan" // Cambia por el usuario real de MercadoLibre
+    };
+
     // Animaciones de entrada
     anime({
       targets: '#titulo',
@@ -640,6 +1214,269 @@
       easing: 'easeOutExpo',
       delay: 500
     });
+
+    // Función para agregar productos al carrito
+    function addToCart(id, name, price) {
+      if (cart[id]) {
+        cart[id].quantity += 1;
+      } else {
+        cart[id] = {
+          name: name,
+          price: price,
+          quantity: 1
+        };
+      }
+      
+      updateCartDisplay();
+      updateButton(id);
+      showQuantityControls(id);
+      
+      // Animación del botón
+      anime({
+        targets: `#btn-${id}`,
+        scale: [1, 1.1, 1],
+        duration: 300,
+        easing: 'easeOutElastic(1, .6)'
+      });
+    }
+
+    // Función para actualizar cantidades
+    function updateQuantity(id, change) {
+      if (cart[id]) {
+        cart[id].quantity += change;
+        
+        if (cart[id].quantity <= 0) {
+          delete cart[id];
+          hideQuantityControls(id);
+          resetButton(id);
+        } else {
+          updateQuantityDisplay(id);
+        }
+        
+        updateCartDisplay();
+      }
+    }
+
+    // Función para mostrar controles de cantidad
+    function showQuantityControls(id) {
+      document.getElementById(`qty-${id}`).style.display = 'flex';
+      document.getElementById(`btn-${id}`).style.display = 'none';
+    }
+
+    // Función para ocultar controles de cantidad
+    function hideQuantityControls(id) {
+      document.getElementById(`qty-${id}`).style.display = 'none';
+      document.getElementById(`btn-${id}`).style.display = 'block';
+    }
+
+    // Función para actualizar la visualización de cantidad
+    function updateQuantityDisplay(id) {
+      const quantityDisplay = document.querySelector(`#qty-${id} .quantity-display`);
+      if (quantityDisplay && cart[id]) {
+        quantityDisplay.textContent = cart[id].quantity;
+      }
+    }
+
+    // Función para actualizar el botón
+    function updateButton(id) {
+      const button = document.getElementById(`btn-${id}`);
+      if (button) {
+        button.textContent = '¡Agregado!';
+        setTimeout(() => {
+          button.textContent = button.textContent.includes('extra') ? 'Agregar extra' : 'Agregar al carrito';
+        }, 1000);
+      }
+    }
+
+    // Función para resetear el botón
+    function resetButton(id) {
+      const button = document.getElementById(`btn-${id}`);
+      if (button) {
+        button.textContent = button.textContent.includes('extra') ? 'Agregar extra' : 'Agregar al carrito';
+      }
+    }
+
+    // Función para actualizar la visualización del carrito
+    function updateCartDisplay() {
+      cartTotal = 0;
+      cartCount = 0;
+      
+      // Calcular totales
+      for (let id in cart) {
+        cartTotal += cart[id].price * cart[id].quantity;
+        cartCount += cart[id].quantity;
+      }
+      
+      // Actualizar contador del carrito
+      const cartCounter = document.getElementById('cartCounter');
+      if (cartCount > 0) {
+        cartCounter.style.display = 'flex';
+        cartCounter.textContent = cartCount;
+      } else {
+        cartCounter.style.display = 'none';
+      }
+      
+      // Actualizar contenido del carrito
+      updateCartItems();
+      updateCartTotal();
+    }
+
+    // Función para actualizar los elementos del carrito
+    function updateCartItems() {
+      const cartItems = document.getElementById('cartItems');
+      const cartActions = document.getElementById('cartActions');
+      
+      if (Object.keys(cart).length === 0) {
+        cartItems.innerHTML = '<p style="text-align: center; color: #666; padding: 1rem;">Tu carrito está vacío</p>';
+        cartActions.style.display = 'none';
+      } else {
+        let itemsHTML = '';
+        for (let id in cart) {
+          const item = cart[id];
+          itemsHTML += `
+            <div class="cart-item">
+              <div class="cart-item-info">
+                <div class="cart-item-name">${item.name}</div>
+                <div class="cart-item-details">Cantidad: ${item.quantity} | $${item.price.toLocaleString()}</div>
+              </div>
+              <button class="quantity-btn" onclick="updateQuantity('${id}', -1)">×</button>
+            </div>
+          `;
+        }
+        cartItems.innerHTML = itemsHTML;
+        cartActions.style.display = 'flex';
+      }
+    }
+
+    // Función para actualizar el total del carrito
+    function updateCartTotal() {
+      const cartTotalElement = document.getElementById('cartTotal');
+      if (cartTotal > 0) {
+        cartTotalElement.style.display = 'block';
+        cartTotalElement.textContent = `Total: $${cartTotal.toLocaleString()}`;
+      } else {
+        cartTotalElement.style.display = 'none';
+      }
+    }
+
+    // Función para mostrar/ocultar carrito
+    function toggleCart() {
+      const floatingCart = document.getElementById('floatingCart');
+      floatingCart.classList.toggle('visible');
+    }
+
+    // Función para enviar pedido por WhatsApp
+    function sendWhatsApp() {
+      if (Object.keys(cart).length === 0) {
+        alert('Tu carrito está vacío');
+        return;
+      }
+      
+      // Mostrar modal para hora de retiro
+      showPickupModal();
+    }
+
+    // Función para mostrar modal de hora de retiro
+    function showPickupModal() {
+      const modal = document.getElementById('pickupModal');
+      const timeInput = document.getElementById('pickupTime');
+      
+      // Limpiar input y botones seleccionados
+      timeInput.value = '';
+      document.querySelectorAll('.time-btn').forEach(btn => btn.classList.remove('selected'));
+      
+      modal.classList.add('visible');
+      
+      // Enfocar el input
+      setTimeout(() => timeInput.focus(), 300);
+    }
+
+    // Función para cerrar modal
+    function closePickupModal() {
+      const modal = document.getElementById('pickupModal');
+      modal.classList.remove('visible');
+    }
+
+    // Función para seleccionar tiempo sugerido
+    function selectTime(time) {
+      const timeInput = document.getElementById('pickupTime');
+      timeInput.value = time;
+      
+      // Actualizar botones seleccionados
+      document.querySelectorAll('.time-btn').forEach(btn => {
+        btn.classList.remove('selected');
+        if (btn.textContent === time || btn.onclick.toString().includes(time)) {
+          btn.classList.add('selected');
+        }
+      });
+      
+      // Encontrar y marcar el botón correcto
+      event.target.classList.add('selected');
+    }
+
+    // Función para confirmar hora y enviar WhatsApp
+    function confirmPickupTime() {
+      const timeInput = document.getElementById('pickupTime');
+      const pickupTime = timeInput.value.trim();
+      
+      if (!pickupTime) {
+        alert('Por favor indica la hora de retiro');
+        return;
+      }
+      
+      // Crear mensaje de WhatsApp
+      let message = `🍝 *Pedido - ${restaurantData.name}*\n\n`;
+      
+      for (let id in cart) {
+        const item = cart[id];
+        message += `• ${item.name}\n`;
+        message += `  Cantidad: ${item.quantity}\n`;
+        message += `  Precio: $${(item.price * item.quantity).toLocaleString()}\n\n`;
+      }
+      
+      message += `💰 *Total: $${cartTotal.toLocaleString()}*\n\n`;
+      message += `� *Hora de retiro:* ${pickupTime}\n\n`;
+      message += `� *Ubicación:* ${restaurantData.address}\n`;
+      message += `*Modalidad:* Retiro en local\n\n`;
+      message += `¡Gracias por elegir ${restaurantData.name}! 🇮🇹\n`;
+      message += `Te esperamos para que retires tu delicioso pedido.`;
+      
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappURL = `https://wa.me/${restaurantData.phone}?text=${encodedMessage}`;
+      
+      // Cerrar modal y abrir WhatsApp
+      closePickupModal();
+      window.open(whatsappURL, '_blank');
+    }
+
+    // Función para pagar con MercadoLibre
+    function payWithMercadoLibre() {
+      if (Object.keys(cart).length === 0) {
+        alert('Tu carrito está vacío');
+        return;
+      }
+      
+      // Crear título del producto para MercadoLibre
+      let title = "Pedido Pasta Italiana al Paso";
+      if (Object.keys(cart).length === 1) {
+        const firstItem = cart[Object.keys(cart)[0]];
+        title = firstItem.name;
+      }
+      
+      // URL de MercadoLibre para crear un link de pago
+      // Nota: Este es un ejemplo básico. Para implementación real, necesitarías integrar con la API de MercadoLibre
+      const mercadolibreURL = `https://www.mercadolibre.cl/checkout/v1/redirect?` +
+        `pref_id=PASTA_ITALIANA_${Date.now()}&` +
+        `amount=${cartTotal}&` +
+        `currency=CLP&` +
+        `title=${encodeURIComponent(title)}`;
+      
+      // Alternativamente, podrías redirigir a una página de pago personalizada
+      alert(`Funcionalidad de pago con MercadoLibre en desarrollo.\n\nTotal a pagar: $${cartTotal.toLocaleString()}\n\nPor favor, completa tu pedido por WhatsApp por el momento.`);
+      
+      // Descomentar la siguiente línea cuando tengas configurado MercadoLibre
+      // window.open(mercadolibreURL, '_blank');
+    }
 
     // Mostrar menú flotante al hacer scroll
     window.addEventListener('scroll', () => {
@@ -692,4 +1529,47 @@
     });
 
     // Scroll suave para los enlaces del menú flotante
-    document.querySelectorAll('.floating-me
+    document.querySelectorAll('.floating-menu a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+          targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Event listeners para el modal
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('pickupModal');
+      const timeInput = document.getElementById('pickupTime');
+      
+      // Cerrar modal al hacer clic fuera
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closePickupModal();
+        }
+      });
+      
+      // Confirmar con Enter
+      timeInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          confirmPickupTime();
+        }
+      });
+      
+      // Cerrar modal con Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('visible')) {
+          closePickupModal();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
